@@ -1,0 +1,21 @@
+@media(max-width: 450px) {
+  .container {
+    width: 450px;
+  }
+  .decription {
+    padding: 0;
+    margin-bottom: 30px;
+  }
+  .input-submit {
+    width: 88px;
+    line-height: 34px;
+    font-size: 34px;
+    margin-left: 0;
+  }
+  .modal__window-task {
+    font-size: 34px;
+  }
+  .btn-submit {
+    left: -292px;
+  }
+}
