@@ -1,4 +1,11 @@
-import {randomGenerationTask, solution, randomGenerationIndex} from './randomNum';
+import { randomGenerationTask, solution, randomGenerationIndex } from './randomNum';
+
+function triggerAnimations(elem, className, timeout = 300) {
+  elem.classList.add(className)
+  setTimeout(() => {
+    elem.classList.remove(className);
+  }, timeout);
+}
 
 const startBtn = document.querySelector('.start-btn');
 const modalWindow = document.querySelector('.modal-wrapper');
@@ -13,26 +20,30 @@ startBtn.addEventListener('click', (e) => {
   e.preventDefault;
 
   console.log(number);
-  //show window
+  //show windo
   startBtn.classList.add('none');
-  modalWindow.classList.add('animate__fadeIn');
-  modalWindow.classList.toggle('active-window');
+ triggerAnimations(modalWindow, 'animate__fadeIn');
+  modalWindow.classList.add('active-window');
 });
 
 submitBtn.addEventListener('click', (e, ) => {
 
+  input.value = '';
   if (!input.value == '' && Number(submitBtn.value = input.value) == number) {
     console.log('tak');
     number = solution(randomGenerationTask(), task, randomGenerationIndex());
-    input.value = '';
+    // input.value = '';
     console.log(number);
   } else {
     console.log('nit');
-    number = solution(randomGenerationTask(), task, randomGenerationIndex());
-    modalWindow.classList.toggle('active-window');
-    modalWindow.classList.remove('animate__fadeIn');
+    modalWindow.classList.add('animate__fadeOut')
+    triggerAnimations(modalWindow, 'animate__fadeOut');
+    setTimeout(() => {
+      modalWindow.classList.remove('active-window');
+      number = solution(randomGenerationTask(), task, randomGenerationIndex());
+    }, 300);
     startBtn.classList.remove('none');
-    input.value = '';
+    // input.value = '';
   }
 })
 
@@ -42,9 +53,3 @@ input.addEventListener('keydown', (e) => {
     e.preventDefault()
   }
 })
-
-
-
-
-
-
